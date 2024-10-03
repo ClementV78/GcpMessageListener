@@ -66,12 +66,12 @@ This project subscribes to a Google Cloud Pub/Sub topic that receives Gmail mess
 ## Key Files
 
 - **[`main.py`]("main.py"):** Entry point of the application.
-- **[`config/settings.py`]("config/settings.py"):** Configuration settings.
-- **[`db_manager.py`]("db_manager.py"):** Database management functions.
-- **[`event_handler.py`]("event_handler.py"):** Event handling logic.
-- **[`scheduler.py`]("scheduler.py"):** Scheduling tasks.
-- **[`sms_handler.py`]("sms_handler.py"):** SMS handling functions.
-- **[`tests/test_main.py`]("tests/test_main.py"):** Unit tests for the main script.
+- **[`config/settings.py`](config/settings.py):** Configuration settings.
+- **[`db_manager.py`](db_manager.py):** Database management functions.
+- **[`event_handler.py`](event_handler.py):** Event handling logic.
+- **[`scheduler.py`](scheduler.py):** Scheduling tasks.
+- **[`sms_handler.py`](sms_handler.py):** SMS handling functions.
+- **[`tests/test_main.py`](tests/test_main.py):** Unit tests for the main script.
 
 ## License
 
