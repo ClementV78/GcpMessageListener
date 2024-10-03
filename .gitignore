@@ -1,0 +1,10 @@
+secrets/service-account.json
+gcp_message_listener.code-workspace
+
+# Ignore Python virtual environment
+venv/
+__pycache__/
+old/
+
+# Ignore environment variables file
+.env
