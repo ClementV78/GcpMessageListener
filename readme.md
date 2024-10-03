@@ -42,23 +42,23 @@ This project subscribes to a Google Cloud Pub/Sub topic that receives Gmail mess
 
 ### Main Components
 
-1. **Database Management ([`db_manager.py`]("db_manager.py")):**
+1. **Database Management ([`db_manager.py`](db_manager.py)):**
     - Handles all database operations including CRUD operations.
     - Uses SQLAlchemy for ORM and database interactions.
 
-2. **Event Handling ([`event_handler.py`]("event_handler.py")):**
+2. **Event Handling ([`event_handler.py`](event_handler.py)):**
     - Manages events and triggers appropriate actions.
     - Listens for specific events and processes them accordingly.
 
-3. **Message Scheduling ([`scheduler.py`]("scheduler.py")):**
+3. **Message Scheduling ([`scheduler.py`](scheduler.py)):**
     - Schedules messages to be sent at specific times.
     - Uses APScheduler for scheduling tasks.
 
-4. **SMS Handling ([`sms_handler.py`](sms_handler.py")):**
+4. **SMS Handling ([`sms_handler.py`](sms_handler.py)):**
     - Manages sending and receiving SMS messages.
     - Integrates with external SMS APIs for message delivery.
 
-5. **Google Cloud Pub/Sub Listener ([`pubsub_listener.py`]("pubsub_listener.py")):**
+5. **Google Cloud Pub/Sub Listener ([`pubsub_listener.py`](pubsub_listener.py)):**
     - Listens to messages from Google Cloud Pub/Sub.
     - Processes incoming messages and triggers appropriate actions.
 
