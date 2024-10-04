@@ -73,6 +73,9 @@ This project subscribes to a Google Cloud Pub/Sub topic that receives Gmail mess
 - **[`sms_handler.py`](sms_handler.py):** SMS handling functions.
 - **[`tests/test_main.py`](tests/test_main.py):** Unit tests for the main script.
 
+If you want to run postgre only
+docker run --name some-postgres -e POSTGRES_DB=your_db_name -e POSTGRES_USER=your_db_user -e POSTGRES_PASSWORD=your_db_password -p 5432:5432 -d postgres:13
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
