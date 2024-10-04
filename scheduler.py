@@ -4,6 +4,7 @@ from sms_handler import send_sms
 from datetime import datetime, timedelta
 from babel.dates import format_datetime
 import pytz
+from config.settings import SCHEDULER_INTERVAL_MINUTES
 
 paris_tz = pytz.timezone("Europe/Paris")
 
@@ -55,6 +56,6 @@ def check_and_send_confirmation():
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(check_and_send_confirmation, 'interval', minutes=1)
+    scheduler.add_job(check_and_send_confirmation, 'interval', minutes=SCHEDULER_INTERVAL_MINUTES)
     scheduler.start()
     print("Scheduler APScheduler démarré pour l'envoi des SMS toutes les heures.")
