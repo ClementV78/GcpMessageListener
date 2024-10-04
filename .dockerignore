@@ -1,0 +1,26 @@
+# Exclude secrets
+secrets/service-account.json
+secrets/*.json
+# Exclude workspace settings
+gcp_message_listener.code-workspace
+
+# Exclude Python virtual environment
+venv/
+**/__pycache__/
+__pycache__/
+old/
+tests/
+secrets/
+.dockerignore
+.gitignore
+.vscode/
+
+# Exclude environment variables file
+.env
+
+# Exclude Docker-related files
+Dockerfile
+docker-compose.yml
+
+# Exclude Git repository
+.git
