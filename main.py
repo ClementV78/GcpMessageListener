@@ -1,3 +1,4 @@
+import logging
 import threading
 import time
 from db_setup import create_tables
@@ -5,12 +6,13 @@ from pubsub_listener import start_pubsub_listener
 from scheduler import start_scheduler
 from db_manager import connect_db
 
+logger = logging.getLogger(__name__)
 if __name__ == '__main__':
     conn = connect_db()
     cursor = conn.cursor()
-    print("Connexion à la base de données SQLite établie.")
+    logger.info("Connexion à la base de données SQLite établie.")
     create_tables(cursor)
-    print("Tables créées ou déjà existantes.")
+    logger.info("Tables créées ou déjà existantes.")
     conn.commit()
     conn.close()
 

@@ -42,5 +42,3 @@ def create_tables(cursor):
         FOREIGN KEY (rdv_id) REFERENCES rdv(rdv_id)
     );
     """)
-
-    print("Tables créées ou déjà existantes.")

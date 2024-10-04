@@ -1,6 +1,11 @@
 from dotenv import load_dotenv
 import os
 import ast
+import logging
+
+# Configuration du logger global
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def strtobool(val):
     return bool(ast.literal_eval(val.capitalize()))

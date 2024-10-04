@@ -1,3 +1,4 @@
+import logging
 from apscheduler.schedulers.background import BackgroundScheduler
 from db_manager import connect_db, insert_relance_sms
 from sms_handler import send_sms
@@ -6,10 +7,11 @@ from babel.dates import format_datetime
 import pytz
 from config.settings import SCHEDULER_INTERVAL_MINUTES
 
+logger = logging.getLogger(__name__)
 paris_tz = pytz.timezone("Europe/Paris")
 
 def check_and_send_confirmation():
-    print("Vérification des rendez-vous pour envoi de SMS de confirmation...")
+    logger.info("Vérification des rendez-vous pour envoi de SMS de confirmation...")
     conn = connect_db()
     cursor = conn.cursor()
 
@@ -37,25 +39,25 @@ def check_and_send_confirmation():
         formatted_rdv_datetime = format_datetime(rdv_dt, "EEEE d MMMM y 'à' HH'h'mm", locale='fr_FR')
 
         send_sms(phone, name, formatted_rdv_datetime)
-        print(f"SMS de confirmation envoyé pour le rendez-vous {rdv_id}.")
+        logger.info(f"SMS de confirmation envoyé pour le rendez-vous {rdv_id}.")
 
         cursor.execute("""
             UPDATE rdv
             SET confirmation_sms = 'sent'
             WHERE rdv_id = ?
         """, (rdv_id,))
-        print(f"Champ 'confirmation_sms' mis à jour pour le rendez-vous {rdv_id}.")
+        logger.info(f"Champ 'confirmation_sms' mis à jour pour le rendez-vous {rdv_id}.")
 
         insert_relance_sms(cursor, rdv_id, datetime.now().isoformat(), "première relance")
-        print(f"Relance SMS insérée pour le rendez-vous {rdv_id}.")
+        logger.info(f"Relance SMS insérée pour le rendez-vous {rdv_id}.")
 
     conn.commit()
     conn.close()
 
-    print(f"SMS de confirmation envoyés pour {len(rows)} rendez-vous.")
+    logger.info(f"SMS de confirmation envoyés pour {len(rows)} rendez-vous.")
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
     scheduler.add_job(check_and_send_confirmation, 'interval', minutes=SCHEDULER_INTERVAL_MINUTES)
     scheduler.start()
-    print("Scheduler APScheduler démarré pour l'envoi des SMS toutes les heures.")
+    logger.info("Scheduler APScheduler démarré pour l'envoi des SMS toutes les heures.")
